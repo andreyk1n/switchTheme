@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+
+    <div class="wrapper">
+        <label class="switch-btn">
+            <input type="checkbox" id="toggleSwitch" onclick="toggleTheme()">
+            <span class="slider"></span>
+        </label>
+    
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet aliquam vitae cupiditate nesciunt, esse quis praesentium dolores! Omnis non rem optio sit amet ipsam quasi maiores, praesentium unde delectus facere.
+        Temporibus voluptates consectetur porro pariatur hic molestiae, dolores amet eum maxime doloribus nemo accusantium animi qui unde, voluptas sapiente eaque labore totam iusto consequuntur, rerum laboriosam nulla? Dicta, veniam blanditiis.
+        Dolorum inventore optio, blanditiis ex quam dicta natus temporibus amet ducimus quos odit, reprehenderit laboriosam sit error. Quos modi similique, adipisci laudantium sint eos nemo architecto, nulla consectetur dignissimos earum.
+        Aliquid officia fugit labore pariatur earum odit nemo illo hic laudantium, quasi sed praesentium ducimus optio maiores magni, quos facilis porro tempore dolor est. Iure dicta blanditiis molestiae sequi possimus.
+        Velit obcaecati distinctio sint. Nulla sunt eum commodi suscipit, molestias atque odio possimus repudiandae? Facere dolore id itaque nemo omnis esse! Molestias nulla sequi sed vitae accusantium delectus explicabo tempora!</p>
+    </div>
+    <script>
+        const toggleSwitch = document.getElementById('toggleSwitch');
+
+        // Перевіряємо, чи в localStorage вже є збережена тема
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            applyTheme(savedTheme);
+            // Встановлюємо перемикач в потрібне положення
+            toggleSwitch.checked = savedTheme === 'dark';
+        }
+
+        function toggleTheme() {
+            const newTheme = toggleSwitch.checked ? 'dark' : 'light';
+            applyTheme(newTheme);
+        }
+
+        function applyTheme(theme) {
+            const root = document.documentElement;
+
+            // Видаляємо попередню тему перед встановленням нової
+            root.classList.remove('dark');
+            
+            if (theme === 'dark') {
+                root.classList.add('dark');
+            }
+
+            localStorage.setItem('theme', theme);
+        }
+    </script>
+</body>
+</html>

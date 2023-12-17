@@ -1,0 +1,79 @@
+:root {
+    --bgColor: white;
+    --fontColor: black;
+}
+
+:root.dark {
+    --bgColor: black;
+    --fontColor: white;
+}
+
+body {
+    background-color: var(--bgColor);
+    color: var(--fontColor);
+    transition: background-color 0.3s, color 0.3s;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.switch-btn {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    cursor: pointer;
+    background-color: #3498db;
+    border-radius: 17px;
+    transition: background-color 0.3s;
+}
+
+.switch-btn input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--bgColor);
+    border-radius: 17px;
+    transition: background-color 0.3s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: var(--bgColor);
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+.switch-btn input:checked + .slider {
+    background-color: #2196F3;
+}
+
+.switch-btn input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+.switch-btn input:checked + .slider:before {
+    transform: translateX(26px);
+}
